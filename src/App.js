@@ -4,8 +4,13 @@ import "semantic-ui-css/semantic.min.css";
 import { Segment, Menu } from "semantic-ui-react";
 import "./App.css";
 import LoginComponent from "./components/logincomponent";
-import { useSelector } from "react-redux";
-import { stat } from "fs";
+import { connect } from "react-redux";
+
+const mapStateToProps = store => ({
+  isMyRecordsTabSelected: store.myRecordsTabReducer,
+  isProfileTabSelected: store.profileTabReducer,
+  isSportsTabSelected: store.sportsTabReducer
+});
 
 class App extends React.Component {
   state = {
@@ -33,10 +38,8 @@ class App extends React.Component {
   }
 
   render() {
-    // const counter = useState(state => state.counter);
     return (
       <div className="App">
-        <h1>counter : {counter}</h1>
         <Segment inverted>
           <Menu inverted secondary>
             <Menu.Item
@@ -65,4 +68,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);
