@@ -3,7 +3,6 @@ import axios from "axios";
 import "semantic-ui-css/semantic.min.css";
 import { Segment, Menu } from "semantic-ui-react";
 import "./App.css";
-import LoginComponent from "./components/logincomponent";
 import { connect } from "react-redux";
 
 const mapStateToProps = store => ({
@@ -62,7 +61,6 @@ class App extends React.Component {
             />
           </Menu>
         </Segment>
-        <LoginComponent />
       </div>
     );
   }
