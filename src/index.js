@@ -4,34 +4,21 @@ import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
-import TestComponent from "./components/testComponent";
+import isLoggedInReducer from "./reducers/isLoggedInReducer";
 
-// const store = createStore(
-//   allReducers,
-//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// );
+import App from "./App";
 
-function productReducer(state = [], action) {
-  return state;
-}
-function userReducer(state = "", action) {
-  if (action.type === "updateUser") {
-    return action.payload.user;
-  }
-  return state;
-}
-const allReducersss = combineReducers({
-  products: productReducer,
-  user: userReducer
+const allReducers = combineReducers({
+  isLoggedIn: isLoggedInReducer
 });
-const store = createStore(allReducersss, {
-  products: [{ name: "iPhone", year: 2007 }],
-  user: "Gökalp"
-});
+const store = createStore(
+  allReducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
   <Provider store={store}>
-    <TestComponent />
+    <App />
   </Provider>,
   document.getElementById("root")
 );
